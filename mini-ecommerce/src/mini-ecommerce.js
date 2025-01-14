@@ -3,6 +3,7 @@ import './mini-ecommerce.css';
 
 import Menu from './components/menu/menu';
 import Produtos from './components/produtos/produtos';
+import Checkout from './components/checkout/checkout';
 
 function MiniEcommerce() {
 
@@ -15,6 +16,7 @@ function MiniEcommerce() {
     <div>
       <Menu />
       <Produtos />
+      <Checkout />
     </div>
   );
 }
