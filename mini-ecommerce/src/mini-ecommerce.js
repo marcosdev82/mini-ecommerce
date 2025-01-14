@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './mini-ecommerce.css';
 
+import Menu from './components/menu/menu';
+import Produtos from './components/produtos/produtos';
+
 function MiniEcommerce() {
 
   const [carrinho, setCarrinho] = useState({ produtos: []});
@@ -9,7 +12,10 @@ function MiniEcommerce() {
   const [total, setTotal] = useState('0,00');
 
   return (
-     <h1>Mini ecommerce</h1>
+    <div>
+      <Menu />
+      <Produtos />
+    </div>
   );
 }
 
