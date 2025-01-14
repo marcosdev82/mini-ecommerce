@@ -9,7 +9,7 @@ function MiniEcommerce() {
 
   const [carrinho, setCarrinho] = useState({ produtos: []});
   const [exibirProduto, setExibirProduto] = useState(true);
-  const [exibirCheckout, setExibirCheckout] = useState(true);
+  const [exibirCheckout, setExibirCheckout] = useState(false);
   const [total, setTotal] = useState('0,00');
 
   return (
