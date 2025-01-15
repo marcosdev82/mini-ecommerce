@@ -7,6 +7,8 @@ function Produtos(props) {
     const [exibirMsg, setExibirMsg] = useState(false);
     const [produto, setProduto] = useState('');
 
+   
+
     function visivel() {
         return props.visivel ? null : 'hidden';
     }
@@ -18,7 +20,7 @@ function Produtos(props) {
             setExibirMsg(false);
         }, 3000);
     }
-
+  
     return (
         <div className={visivel()}>
             <Alert 
@@ -26,7 +28,7 @@ function Produtos(props) {
                 style={{ margin: '10px' }}
                 show={exibirMsg}
             >
-                <b>{produto}</b> adicionado com sucesso ao carrinho.
+                <b>{produto.nome}</b> adicionado com sucesso ao carrinho.
             </Alert>
             <ListarProdutos
                 exibirMensagem={exibirMensagem}
