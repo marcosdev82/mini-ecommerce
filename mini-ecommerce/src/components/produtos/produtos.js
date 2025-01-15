@@ -11,6 +11,14 @@ function Produtos(props) {
         return props.visivel  ? null : 'hidden'
     }
 
+    function exibirMensagem(produto) {
+        setExibirMsg(true);
+        setProduto(produto);
+        setTimeout(() => {
+            setExibirMsg(false);
+        }, 3000);
+    }
+
     return (
         <div className={visivel()}>
             <ListarProdutos />
