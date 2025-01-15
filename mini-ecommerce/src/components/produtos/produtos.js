@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import ListarProdutos from "./listar-produtos";
 import PropTypes from "prop-types";
+import Alert from "react-bootstrap/Alert";
 
 function Produtos(props) {
-
     const [exibirMsg, setExibirMsg] = useState(false);
     const [produto, setProduto] = useState('');
 
     function visivel() {
-        return props.visivel  ? null : 'hidden'
+        return props.visivel ? null : 'hidden';
     }
 
     function exibirMensagem(produto) {
@@ -21,15 +21,24 @@ function Produtos(props) {
 
     return (
         <div className={visivel()}>
-            <ListarProdutos />
+            <Alert 
+                variant="success"
+                style={{ margin: '10px' }}
+                show={exibirMsg}
+            >
+                <b>{produto}</b> adicionado com sucesso ao carrinho.
+            </Alert>
+            <ListarProdutos
+                exibirMensagem={exibirMensagem}
+                adicionarProduto={props.adicionarProduto} // Correção: usar a prop passada para o componente
+            />
         </div>
     );
-
 }
 
-Produtos.prototype = {
+Produtos.propTypes = { // Correção do nome para `propTypes`
     visivel: PropTypes.bool.isRequired,
-    adicionarProdutos: PropTypes.func.isRequired
-}
+    adicionarProduto: PropTypes.func.isRequired // Corrigido para coincidir com a prop usada no componente
+};
 
 export default Produtos;
