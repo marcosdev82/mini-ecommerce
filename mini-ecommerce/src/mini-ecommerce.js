@@ -13,8 +13,7 @@ function MiniEcommerce() {
   const [total, setTotal] = useState('0,00');
 
   function adicionarProduto(produto) {
-    console.log(produto)
-    // const objCarrinho = Object.assign({}, carrinho);
+    const objCarrinho = Object.assign({}, carrinho);
     // atualizar quantidade
 
     // adicionar quantidade
