@@ -34,7 +34,7 @@ function ListarProdutos() {
                     <Button
                         variant="success"
                         style={{ width: '100%' }}
-                        onClick={}>
+                        onClick={() => false }>
                         Comprar {produto.preco}
                     </Button>
                 </Card.Body>
