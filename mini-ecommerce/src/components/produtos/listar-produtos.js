@@ -14,6 +14,10 @@ function ListarProdutos() {
         { nome: "Curso de Inteligência Artificial com Python", preco: 'R$ 249.90' }
     ];
 
+    function handleComprar(event, produto) {
+        console.log(event, produto)
+    }
+    
     function render() {
 
         let key = 1;
@@ -34,7 +38,7 @@ function ListarProdutos() {
                     <Button
                         variant="success"
                         style={{ width: '100%' }}
-                        onClick={() => false }>
+                        onClick={(event) => handleComprar(event, produto) }>
                         Comprar {produto.preco}
                     </Button>
                 </Card.Body>
