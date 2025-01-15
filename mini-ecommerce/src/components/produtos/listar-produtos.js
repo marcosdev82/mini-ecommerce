@@ -2,6 +2,7 @@ import React from "react";
 import placeholder from "../../images/placeholder.jpg";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import PropTypes from "prop-types";
 
 function ListarProdutos() {
     const produtos = [
@@ -50,6 +51,11 @@ function ListarProdutos() {
     }
       
     return render();
+}
+
+ListarProdutos.prototype = {
+    adicionarProduto: PropTypes.func.isRequired,
+    exibirMensagem: PropTypes.func.isRequired
 }
 
 export default ListarProdutos;
