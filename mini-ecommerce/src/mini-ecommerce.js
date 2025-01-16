@@ -28,6 +28,7 @@ function MiniEcommerce() {
         nome: produto.nome, preco: produto.preco, quantidade: 1
       })
     }
+    setCarrinho(objCarrinho)
   }
 
   function handleExibirProdutos() {
@@ -44,6 +45,7 @@ function MiniEcommerce() {
   return (
     <div>
       <Menu 
+        produtos={carrinho.produtos}
         handleExibirProdutos={handleExibirProdutos}
         handleExibirCheckout={handleExibirCheckout}
       />

@@ -7,19 +7,21 @@ import {
 import PropTypes from 'prop-types';
 
 function Menu(props) {
-
-    function calculaTotal() {
-
-        if (props.produtos && props.produtos.length === 0) {
-            return '0,00'
+ 
+    function calcularTotal() {
+        if (props.produtos && props.produtos.length === 0 ) {
+            return '0,00';
         }
+    
         let total = 0;
         props.produtos.forEach(produto => {
             let preco = produto.preco.replace(',', '.').replace('R$ ', '');
-            total += parseFloat(preco) * produto.quantidade; 
+            total += parseFloat(preco) * produto.quantidade;
         });
-        return total.toFixed(2).replace('.', ',');
+    
+        return total.toFixed(2).toString().replace('.', ',');
     }
+
    
     return (
         <Navbar bg="dark" variant="dark" style={{ padding: '5px' }}>
@@ -47,14 +49,14 @@ function Menu(props) {
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="#">
                             &nbsp;
-                            Total: R$ {calculaTotal()}
+                            Total: R$ {calcularTotal()}
                         </NavDropdown.Item>
                         <span className={props.produtos && props.produtos.length === 0 ? 'hidden' : null}>
                             <NavDropdown.Divider />
                             <NavDropdown.Item
                                 href="#"
                                 style={{ color: 'green' }}
-                                onClick={props.handleExibirCheckout}
+                                onClick={() => props.handleExibirCheckout(calcularTotal())}
                             >
                                 <FontAwesomeIcon icon={faCashRegister} />
                                 &nbsp;
