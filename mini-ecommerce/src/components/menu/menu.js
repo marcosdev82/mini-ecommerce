@@ -7,6 +7,19 @@ import {
 import PropTypes from 'prop-types';
 
 function Menu(props) {
+
+    function calculaTotal() {
+
+        if (props.produtos && props.produtos.length === 0) {
+            return '0,00'
+        }
+        let total = 0;
+        props.produtos.forEach(produto => {
+            let preco = produto.preco.replace(',', '.').replace('R$ ', '');
+            total += parseFloat(preco) * produto.quantidade; 
+        });
+        return total.toFixed(2).replace('.', ',');
+    }
    
     return (
         <Navbar bg="dark" variant="dark" style={{ padding: '5px' }}>
@@ -34,7 +47,7 @@ function Menu(props) {
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="#">
                             &nbsp;
-                            Total: R$ {/** Chamar a função de cálculo do total */}
+                            Total: R$ {calculaTotal()}
                         </NavDropdown.Item>
                         <span className={props.produtos && props.produtos.length === 0 ? 'hidden' : null}>
                             <NavDropdown.Divider />
