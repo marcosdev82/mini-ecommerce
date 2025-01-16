@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faShoppingBasket, faCashRegister, faShoppingCart
 } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types';
 
-function Menu() {
+function Menu(props) {
     return (
         <Navbar bg="dark" variant="dark" style={{padding: '5px'}}>
             <Navbar.Brand href="">Mini Ecommerce</Navbar.Brand>
@@ -22,22 +23,24 @@ function Menu() {
                         drop="down" 
                         align="end"
                     >
-                        <NavDropdown.Item href="">
+                        <NavDropdown.Item href=""
+                            onClick={props.handleExibirProdutos}
+                            >
                             <FontAwesomeIcon icon={faShoppingBasket} />
                             &nbsp;
                             <strong>Produtos</strong>
                         </NavDropdown.Item>
                         <NavDropdown.Divider/>
                         <NavDropdown.Item href="">
-                           
                             &nbsp;
                             Total: R$ {/** Chamar a função de calculo do total */}
                         </NavDropdown.Item>
-                        <span> 
+                        <span className={ props.produtos.length === 0 ? 'hidden' : null }> 
                             <NavDropdown.Divider/>
                             <NavDropdown.Item
                                 href=""
                                 style={{color: 'green'}}
+                                onClick={ props.handleExibirCheckout }
                             >
                                 <FontAwesomeIcon icon={faCashRegister} />
                                 &nbsp;
@@ -50,4 +53,11 @@ function Menu() {
         </Navbar>
     );
 }
+
+Menu.propTypes = {
+    produtos: PropTypes.array.isRequired,
+    handleExibirProdutos: PropTypes.func.isRequired,
+    handleExibirCheckout: PropTypes.func.isRequired
+}
+
 export default Menu;
