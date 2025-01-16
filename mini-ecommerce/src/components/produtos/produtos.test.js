@@ -4,11 +4,10 @@ import '@testing-library/jest-dom';
 
 describe('Teste do componente Produto', () => {
   it('deve renderizar o componente quando visivel', () => {
-        const { getAllByText } = render(
-            <Produtos visivel={true} adicionarProduto={() => false} />
-        );
-        const botoes = getAllByText(/comprar/i);
-        expect(botoes).toBeTruthy();
-
+      render(
+          <Produtos visivel={true} adicionarProduto={() => false} />
+      );
+      const botoes = screen.getAllByText(/comprar/i);
+      expect(botoes).toBeTruthy();
   });
 });

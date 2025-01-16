@@ -43,7 +43,7 @@ function ListarProdutos(props) {
                         variant="success"
                         style={{ width: '100%' }}
                         onClick={(event) => handleComprar(event, produto) }>
-                        Comprar {produto.preco}
+                        Comprar ({produto.preco})
                     </Button>
                 </Card.Body>
                 
