@@ -11,10 +11,7 @@ function ItensCarrinhoMenu(props) {
         if (props.produtos && props.produtos.length === 0 ) {
             return( 
                 <NavDropdown.Item href="#" data-testid="items">
-                    <FontAwesomeIcon icon={faSadTear} style={{marginRight: '5px'}}>
-                       
-                    </FontAwesomeIcon>
-                    
+                    <FontAwesomeIcon icon={faSadTear} style={{marginRight: '5px'}} />
                     Carrinho vazil...
                 </NavDropdown.Item>
             );
@@ -33,7 +30,7 @@ function ItensCarrinhoMenu(props) {
 
 }
 
-ItensCarrinhoMenu.prototypeS = {
+ItensCarrinhoMenu.protoTypes = {
     produtos: PropTypes.array.isRequired
 }
 
