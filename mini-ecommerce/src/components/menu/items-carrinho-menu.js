@@ -5,16 +5,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSadTear } from "@fortawesome/free-solid-svg-icons";
 
 function ItensCarrinhoMenu(props) {
-
+    
     function render() {
 
-        if (!props.produtos && props.produtos.length === 0) {
-            <NavDropdown.Item href="#" data-testid="items">
-                <FontAwesomeIcon icon={faSadTear}>
-                    &npsp;
+        if (props.produtos && props.produtos.length === 0 ) {
+            return( 
+                <NavDropdown.Item href="#" data-testid="items">
+                    <FontAwesomeIcon icon={faSadTear} style={{marginRight: '5px'}}>
+                       
+                    </FontAwesomeIcon>
+                    
                     Carrinho vazil...
-                </FontAwesomeIcon>
-            </NavDropdown.Item>
+                </NavDropdown.Item>
+            );
         }
 
         const items = props.produtos.map((produto) =>  
