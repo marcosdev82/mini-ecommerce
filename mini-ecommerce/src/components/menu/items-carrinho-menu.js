@@ -16,9 +16,18 @@ function ItensCarrinhoMenu(props) {
                 </FontAwesomeIcon>
             </NavDropdown.Item>
         }
+
+        const items = props.produtos.map((produto) =>  
+            <NavDropdown.Item href="#" key={produto.nome} data-testid={produto.nome}>
+                {produto.nome} - {produto.quantidade} x {produto.preco}
+            </NavDropdown.Item>
+        );
+
+        return items;
     }
 
     return render();
+
 }
 
 ItensCarrinhoMenu.prototypeS = {
