@@ -99,6 +99,58 @@ function Checkout() {
                         </Form.Control.Feedback>
                     </Col>
                 </Form.Group>
+                <Form.Group as={Row} controlId="estado">
+                    <Form.Label column sm={3}>
+                        Estado
+                    </Form.Label>
+                    <Col sm={9}>
+                        <Form.Control 
+                            type="select"
+                            name="estado"
+                            data-testid="estado"
+                            className="my-2"
+                        >
+                            { /** Listar os estado aqui */}
+                        </Form.Control>
+                        <Form.Control.Feedback type="invalid">
+                            Selecione o seu estado.
+                        </Form.Control.Feedback>
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} controlId="cidade">
+                    <Form.Label column sm={3}>
+                        Cidade
+                    </Form.Label>
+                    <Col sm={9}>
+                        <Form.Control 
+                            type="select"
+                            name="cidade"
+                            data-testid="cidade"
+                            className="my-2"
+                        >
+                            { /** Listar as cidades aqui */}
+                        </Form.Control>
+                        <Form.Control.Feedback type="invalid">
+                            Selecione a sua cidade.
+                        </Form.Control.Feedback>
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} controlId="cep">
+                    <Form.Label column sm={3}>
+                        CEP
+                    </Form.Label>
+                    <Col sm={9}>
+                        <Form.Control
+                            type="text"
+                            placeholder="Digite o seu CEP"
+                            name="cep"
+                            data-testid="txt-cep"
+                            />
+                        <Form.Control.Feedback type="invalid">
+                            Digite seu CEP
+                        </Form.Control.Feedback>
+                    </Col>
+                </Form.Group>
             </Form>
 
         </Container>
