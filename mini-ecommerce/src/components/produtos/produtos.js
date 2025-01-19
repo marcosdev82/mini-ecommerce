@@ -30,10 +30,12 @@ function Produtos(props) {
             >
                 <b>{produto.nome}</b> adicionado com sucesso ao carrinho.
             </Alert>
-            <ListarProdutos
-                exibirMensagem={exibirMensagem}
-                adicionarProduto={props.adicionarProduto} // Correção: usar a prop passada para o componente
-            />
+            <div className="list-produtos">
+                <ListarProdutos
+                    exibirMensagem={exibirMensagem}
+                    adicionarProduto={props.adicionarProduto} // Correção: usar a prop passada para o componente
+                />
+            </div>
         </div>
     );
 }
