@@ -24,7 +24,8 @@ function Checkout() {
                             type="email"
                             placeholder="Digite o seu email"
                             name="email"
-                            data-testid="txt-email" />
+                            data-testid="txt-email"
+                            className="my-2" />
                         <Form.Control.Feedback type="invalid">
                             Digite um email válido
                         </Form.Control.Feedback>
@@ -40,6 +41,7 @@ function Checkout() {
                             placeholder="Digite o seu nome completo"
                             name="nomeCompleto"
                             data-testid="txt-nome-completo"
+                            className="my-2"
                         />
                         <Form.Control.Feedback type="invalid">
                             Digite o seu nome completo (mínimo 5 Caracteres).
@@ -59,7 +61,42 @@ function Checkout() {
                             dropdownMode="select"
                             dateFormat="dd/mm/yyyy" 
                             placeholderText="Selecione a data"
-                            withPortal />
+                            withPortal 
+                            className="my-2"
+                            />
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} controlId="cpf">
+                    <Form.Label column sm={3}>
+                        CPF
+                    </Form.Label>
+                    <Col sm={9}>
+                        <Form.Control
+                            type="text"
+                            placeholder="Digite o seu CPF"
+                            name="cpf"
+                            data-testid="txt-cpf"
+                            />
+                        <Form.Control.Feedback type="invalid">
+                            Digite um CPF válido
+                        </Form.Control.Feedback>
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} controlId="endereco">
+                    <Form.Label column sm={3}>
+                        Endereço
+                    </Form.Label>
+                    <Col sm={9}>
+                        <Form.Control 
+                            type="text"
+                            placeholder="Digite o seu endereço completo"
+                            name="endereco"
+                            data-testid="txt-endereco"
+                            className="my-2"
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            Digite o seu endereço.
+                        </Form.Control.Feedback>
                     </Col>
                 </Form.Group>
             </Form>
