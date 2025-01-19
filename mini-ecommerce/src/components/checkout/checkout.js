@@ -147,9 +147,42 @@ function Checkout() {
                             data-testid="txt-cep"
                             />
                         <Form.Control.Feedback type="invalid">
-                            Digite seu CEP
+                            Digite o seu CEP
                         </Form.Control.Feedback>
                     </Col>
+                </Form.Group>
+                <Form.Group as={Row} controlId="emailPromocional">
+                    <Form.Label column sm={12}>
+                        Deseja receber email com promoções?
+                    </Form.Label>
+                    <Form.Check
+                        inline
+                        name="emailPromocional"
+                        value="S"
+                        type="radio"
+                        id="promocaoSim"
+                        label="Sim"
+                        className="col-md-1"
+                        style={{marginLeft: '15px'}} />
+                    <Form.Check
+                        inline
+                        name="emailPromocional"
+                        value="N"
+                        type="radio"
+                        id="promocaoNao"
+                        label="Não"
+                        className="col-md-1"
+                        style={{marginLeft: '15px'}} />
+                </Form.Group>
+
+                <Form.Group as={Row} controlId="termosConficoes">
+                    <Form.Check
+                        name="termosConficoes"
+                        label="Concordo com os termos e condições"
+                        className="col-md-1"
+                        style={{marginLeft: '15px'}}
+                        data-testid="check-termos-conficoes"
+                        />
                 </Form.Group>
             </Form>
 
