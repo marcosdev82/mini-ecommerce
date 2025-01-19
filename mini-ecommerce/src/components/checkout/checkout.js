@@ -174,12 +174,12 @@ function Checkout() {
                         className="col-md-1"
                         style={{marginLeft: '15px'}} />
                 </Form.Group>
-
                 <Form.Group as={Row} controlId="termosConficoes">
-                    <Form.Check
+                    <Form.Check 
+        
                         name="termosConficoes"
                         label="Concordo com os termos e condições"
-                        className="col-md-1"
+                  
                         style={{marginLeft: '15px'}}
                         data-testid="check-termos-conficoes"
                         />
