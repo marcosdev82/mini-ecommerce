@@ -184,6 +184,16 @@ function Checkout() {
                         data-testid="check-termos-conficoes"
                         />
                 </Form.Group>
+                <Form.Group as={Row} controlId="cep">
+                    <Form.Label className="text-center" sm={12}>
+                        <Button
+                            type="submit"
+                            variant="success"
+                            data-testid="btn-finalizar-compra">
+                                Finalizar compra
+                            </Button>
+                    </Form.Label>
+                </Form.Group>
             </Form>
 
         </Container>
