@@ -106,7 +106,7 @@ function Checkout() {
                     </Form.Label>
                     <Col sm={9}>
                         <Form.Control 
-                            type="select"
+                            as="select"
                             name="estado"
                             data-testid="estado"
                             className="my-2"
@@ -124,7 +124,7 @@ function Checkout() {
                     </Form.Label>
                     <Col sm={9}>
                         <Form.Control 
-                            type="select"
+                            as="select"
                             name="cidade"
                             data-testid="cidade"
                             className="my-2"
