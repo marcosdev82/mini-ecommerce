@@ -176,10 +176,8 @@ function Checkout() {
                 </Form.Group>
                 <Form.Group as={Row} controlId="termosConficoes">
                     <Form.Check 
-        
                         name="termosConficoes"
                         label="Concordo com os termos e condições"
-                  
                         style={{marginLeft: '15px'}}
                         data-testid="check-termos-conficoes"
                         />
@@ -195,6 +193,19 @@ function Checkout() {
                     </Form.Label>
                 </Form.Group>
             </Form>
+            <Modal show={true} data-testid="modal-compra-success">
+                <Modal.Header closeButton>
+                    <Modal.Title>Compra realizada com sucesso!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Um email de confirmação foi enviado com os detalhes da transação.
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="success">
+                        Continuar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
 
         </Container>
     );
