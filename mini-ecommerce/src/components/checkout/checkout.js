@@ -3,6 +3,7 @@ import { Form, Row, Col, Button, Container, Modal } from "react-bootstrap";
 import DatePicker, { registerLocale } from "react-datepicker";
 import pt from "date-fns/locale/pt";
 import "react-datepicker/dist/react-datepicker.css";
+import ListarEstados from "./listar-estados";
 
 registerLocale('pt', pt);
 
@@ -110,7 +111,7 @@ function Checkout() {
                             data-testid="estado"
                             className="my-2"
                         >
-                            { /** Listar os estado aqui */}
+                           <ListarEstados />
                         </Form.Control>
                         <Form.Control.Feedback type="invalid">
                             Selecione o seu estado.
