@@ -1,12 +1,28 @@
 import React, { useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Axios from 'axios';
+import axios from 'axios';
 
 function ListarCidades(props) {
 
-    const CIDADES_URL = 'http://localhost:4000/min-ecommerce/estado/cidades'
+    const CIDADES_URL = 'http://localhost:4000/min-ecommerce/:estado/cidades'
+    const [cidades, setCidades] = useState([]);
 
-    const [cidade, setCidades] = useState([]);
+    useEffect(() => {
+        async function obterCidades() {
+            try {
+                let { data } = await axios.get(CIDADES_URL.replace(':estado', props.estado));
+                setCidades(data);
+            } catch (err) {
+                setCidades([]);
+            }
+        }
+
+        if (props.estado !== '') {
+            obterCidades();
+        }
+
+    }, [props.estado]);
     
     return cidades.map((cidade) => 
         <option
