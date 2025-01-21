@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import Axios from 'axios';
 import axios from 'axios';
 
 function ListarCidades(props) {
@@ -21,7 +20,6 @@ function ListarCidades(props) {
         if (props.estado !== '') {
             obterCidades();
         }
-
     }, [props.estado]);
     
     return cidades.map((cidade) => 
