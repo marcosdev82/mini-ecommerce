@@ -130,7 +130,7 @@ function Checkout() {
                             data-testid="cidade"
                             className="my-2"
                         >
-                            <ListarCidades estado={'RJ'} />
+                            <ListarCidades estado={''} />
                         </Form.Control>
                         <Form.Control.Feedback type="invalid">
                             Selecione a sua cidade.
