@@ -5,14 +5,21 @@ import pt from "date-fns/locale/pt";
 import "react-datepicker/dist/react-datepicker.css";
 import ListarEstados from "./listar-estados";
 import ListarCidades from "./listar-cidades";
+import PropTypes from "prop-types";
 
 registerLocale('pt', pt);
 
-function Checkout() {
+function Checkout(props) {
+
+    function visivel() {
+        return props.visivel ? null : 'hidden';
+    }
+
     return (
         <Container 
             fluid
             style={{margin: '10px', padding: '20px', backgroundColor: '#f2f2f2'}}
+            className={visivel()}
         >
             <h3 className="text-center">Finalizar compra</h3>
 
@@ -224,6 +231,14 @@ function Checkout() {
 
         </Container>
     );
+}
+
+Checkout.propTypes = {
+    visivel: PropTypes.bool.isRequired,
+    handleExibirProdutos: PropTypes.func.isRequired,
+    total: PropTypes.string.isRequired,
+    produtos: PropTypes.object.isRequired,
+    handleLimparCarrinho: PropTypes.func.isRequired
 }
 
 export default Checkout;
