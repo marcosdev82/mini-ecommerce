@@ -29,7 +29,18 @@ function Checkout(props) {
         >
             <h3 className="text-center">Finalizar compra</h3>
 
-            <Formik>
+            <Formik
+                onSubmit={(values) => finalizarCompra(values)}     
+                initialValues={{
+                    email: '',
+                    cpf: '',
+                    endereco: '',
+                    cidade: '',
+                    estado: '',
+                    cep: '',
+                    termosCondicoes: false,
+                    emailPromocional: 'S'
+                }}>
                 <Form noValidate style={{margin: '10px'}}>
                     <Form.Group as={Row} controlId="email">
                         <Form.Label column sm={3}>
@@ -210,6 +221,7 @@ function Checkout(props) {
                     </Form.Group>
                 </Form>
             </Formik>
+
             <Modal show={false} data-testid="modal-compra-success">
                 <Modal.Header closeButton>
                     <Modal.Title>Compra realizada com sucesso!</Modal.Title>
