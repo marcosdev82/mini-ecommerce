@@ -21,8 +21,24 @@ function Checkout(props) {
         return props.visivel ? null : 'hidden';
     }
 
-    function finalizarCompra() {
+    function finalizarCompra(value) {
 
+    }
+
+    function handleDataNacimento(data) {
+        setDataNascimento(data);
+    }
+
+    function datePickerCss() {
+        if (!formEnviado) {
+            return "form-control";
+        }
+
+        if (dataNascimento) {
+            return "form-control is-valid";
+        } else {
+            return "form-control is-invalid";
+        }
     }
 
     return (
@@ -114,8 +130,10 @@ function Checkout(props) {
                                     dateFormat="dd/mm/yyyy" 
                                     placeholderText="Selecione a data"
                                     withPortal 
-                                    className="my-2"
-                                    />
+                                    selected={dataNascimento}
+                                    onChange={handleDataNacimento}
+                                    className={"my-2 " + datePickerCss()}
+                                />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="cpf">
@@ -132,6 +150,7 @@ function Checkout(props) {
                                     onChange={handleChange}
                                     isValid={touched.cpf && !errors.cpf}
                                     isInvalid={touched.cpf && !!errors.cpf}
+                                    className={"my-2"}
                                     />
                                 <Form.Control.Feedback type="invalid">
                                     Digite um CPF válido
@@ -212,6 +231,7 @@ function Checkout(props) {
                                     type="text"
                                     placeholder="Digite o seu CEP"
                                     name="cep"
+                                    className={"my-2"}
                                     data-testid="txt-cep"
                                     value={values.cep}
                                     onChange={handleChange}
@@ -235,7 +255,10 @@ function Checkout(props) {
                                 id="promocaoSim"
                                 label="Sim"
                                 className="col-md-1"
-                                style={{marginLeft: '15px'}} />
+                                style={{marginLeft: '15px'}} 
+                                checked={values.emailPromocional === 'S'}  
+                                onChange={handleChange}  
+                            />
                             <Form.Check
                                 inline
                                 name="emailPromocional"
@@ -244,7 +267,10 @@ function Checkout(props) {
                                 id="promocaoNao"
                                 label="Não"
                                 className="col-md-1"
-                                style={{marginLeft: '15px'}} />
+                                style={{marginLeft: '15px'}} 
+                                checked={values.emailPromocional === 'N'}
+                                onChange={handleChange}
+                                />
                         </Form.Group>
                         <Form.Group as={Row} controlId="termosConficoes">
                             <Form.Check 
@@ -252,7 +278,11 @@ function Checkout(props) {
                                 label="Concordo com os termos e condições"
                                 style={{marginLeft: '15px'}}
                                 data-testid="check-termos-conficoes"
-                                />
+                                value={values.termosCondicoes}
+                                onChange={handleChange}
+                                isValid={touched.termosCondicoes && !errors.termosCondicoes}
+                                isInvalid={touched.termosCondicoes && !!errors.termosCondicoes}
+                            />
                         </Form.Group>
                         <Form.Group as={Row} controlId="cep">
                             <Form.Label className="text-center" sm={12}>
