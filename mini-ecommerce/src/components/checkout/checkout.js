@@ -33,12 +33,8 @@ function Checkout(props) {
         if (!formEnviado) {
             return "form-control";
         }
-
-        if (dataNascimento) {
-            return "form-control is-valid";
-        } else {
-            return "form-control is-invalid";
-        }
+    
+        return dataNascimento ? "form-control is-valid" : "form-control is-invalid";
     }
 
     return (
@@ -50,7 +46,11 @@ function Checkout(props) {
             <h3 className="text-center">Finalizar compra</h3>
 
             <Formik
-                onSubmit={(values) => finalizarCompra(values)}     
+                onSubmit={(values, { setSubmitting }) => {
+                setFormEnviado(true); // Atualiza o estado para forçar a validação visual
+                finalizarCompra(values);
+                setSubmitting(false);
+            }}   
                 initialValues={{
                     email: '',
                     nome: '', 
@@ -103,14 +103,15 @@ function Checkout(props) {
                                 <Form.Control
                                     type="text"
                                     placeholder="Digite o seu nome completo"
-                                    name="nomeCompleto"
+                                    name="nome"
                                     data-testid="txt-nome-completo"
                                     className="my-2"
                                     value={values.nome}
-                                    onChange={handleChange}
+                                    onChange={handleChange} // Adiciona onChange corretamente
                                     isValid={touched.nome && !errors.nome}
                                     isInvalid={touched.nome && !!errors.nome}
                                 />
+
                                 <Form.Control.Feedback type="invalid">
                                     Digite o seu nome completo (mínimo 5 Caracteres).
                                 </Form.Control.Feedback>
@@ -162,18 +163,17 @@ function Checkout(props) {
                                 Endereço
                             </Form.Label>
                             <Col sm={9}>
-                                <Form.Control 
-                                    type="text"
-                                    placeholder="Digite o seu endereço completo"
-                                    name="endereco"
-                                    data-testid="txt-endereco"
-                                    className="my-2"
-                                    value={values.endereco}
-                                    onChange={handleChange}
-                                    isValid={touched.endereco && !errors.endereco}
-                                    isInvalid={touched.endereco && !!errors.enderco}
-
-                                />
+                            <Form.Control 
+                                type="text"
+                                placeholder="Digite o seu endereço completo"
+                                name="endereco"
+                                data-testid="txt-endereco"
+                                className="my-2"
+                                value={values.endereco}
+                                onChange={handleChange} // Adicionado onChange
+                                isValid={touched.endereco && !errors.endereco}
+                                isInvalid={touched.endereco && !!errors.endereco} // Corrigido
+                            />
                                 <Form.Control.Feedback type="invalid">
                                     Digite o seu endereço.
                                 </Form.Control.Feedback>
@@ -206,18 +206,20 @@ function Checkout(props) {
                                 Cidade
                             </Form.Label>
                             <Col sm={9}>
-                                <Form.Control 
-                                    as="select"
-                                    name="cidade"
-                                    data-testid="cidade"
-                                    className="my-2"
-                                    value={values.estado}
-                                    isValid={touched.cidade && !errors.cidade}
-                                    isInvalid={touched.cidade && !!errors.cidade}
-                                >
-                                    <option value="">Selecione a cidade</option>
-                                    <ListarCidades estado={values.estado} />
-                                </Form.Control>
+                            <Form.Control 
+                                as="select"
+                                name="cidade"
+                                data-testid="cidade"
+                                className="my-2"
+                                value={values.cidade} // Corrigido para values.cidade
+                                onChange={handleChange} // Adiciona onChange corretamente
+                                isValid={touched.cidade && !errors.cidade}
+                                isInvalid={touched.cidade && !!errors.cidade}
+                            >
+                                <option value="">Selecione a cidade</option>
+                                <ListarCidades estado={values.estado} />
+                            </Form.Control>
+
                                 <Form.Control.Feedback type="invalid">
                                     Selecione a sua cidade.
                                 </Form.Control.Feedback>
@@ -274,16 +276,16 @@ function Checkout(props) {
                                 />
                         </Form.Group>
                         <Form.Group as={Row} controlId="termosConficoes">
-                            <Form.Check 
-                                name="termosConficoes"
-                                label="Concordo com os termos e condições"
-                                style={{marginLeft: '15px'}}
-                                data-testid="check-termos-conficoes"
-                                value={values.termosCondicoes}
-                                onChange={handleChange}
-                                isValid={touched.termosCondicoes && !errors.termosCondicoes}
-                                isInvalid={touched.termosCondicoes && !!errors.termosCondicoes}
-                            />
+                        <Form.Check 
+                            name="termosCondicoes"
+                            label="Concordo com os termos e condições"
+                            style={{marginLeft: '15px'}}
+                            data-testid="check-termos-condicoes"
+                            checked={values.termosCondicoes} // Alterado de "value" para "checked"
+                            onChange={handleChange} // Adicionado onChange corretamente
+                            isValid={touched.termosCondicoes && !errors.termosCondicoes}
+                            isInvalid={touched.termosCondicoes && !!errors.termosCondicoes}
+                        />
                         </Form.Group>
                         <Form.Group as={Row} controlId="cep">
                             <Form.Label className="text-center" sm={12}>
