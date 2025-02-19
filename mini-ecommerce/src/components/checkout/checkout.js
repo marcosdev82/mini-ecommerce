@@ -211,11 +211,12 @@ function Checkout(props) {
                                     name="cidade"
                                     data-testid="cidade"
                                     className="my-2"
-                                    value={values.cidade}
+                                    value={values.estado}
                                     isValid={touched.cidade && !errors.cidade}
                                     isInvalid={touched.cidade && !!errors.cidade}
                                 >
-                                    <ListarCidades estado={''} />
+                                    <option value="">Selecione a cidade</option>
+                                    <ListarCidades estado={values.estado} />
                                 </Form.Control>
                                 <Form.Control.Feedback type="invalid">
                                     Selecione a sua cidade.
