@@ -15,10 +15,14 @@ function Checkout(props) {
     const [dataNascimento, setDataNascimento] = useState(null);
     const [formEnviado, setFormEnviado] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [showErroModal, setShowModal] = useState(false);
+    const [showErroModal, setErroShowModal] = useState(false);
 
     function visivel() {
         return props.visivel ? null : 'hidden';
+    }
+
+    function finalizarCompra() {
+
     }
 
     return (
@@ -33,6 +37,7 @@ function Checkout(props) {
                 onSubmit={(values) => finalizarCompra(values)}     
                 initialValues={{
                     email: '',
+                    nome: '', 
                     cpf: '',
                     endereco: '',
                     cidade: '',
@@ -48,7 +53,11 @@ function Checkout(props) {
                     touched,
                     errors
                 }) => (
-                    <Form noValidate style={{margin: '10px'}}>
+                    <Form 
+                        noValidate 
+                        style={{margin: '10px'}}
+                        onSubmit={handleSubmit}
+                    >
                         <Form.Group as={Row} controlId="email">
                             <Form.Label column sm={3}>
                                 E-mail
@@ -59,7 +68,12 @@ function Checkout(props) {
                                     placeholder="Digite o seu email"
                                     name="email"
                                     data-testid="txt-email"
-                                    className="my-2" />
+                                    className="my-2" 
+                                    value={values.email}
+                                    onChange={handleChange}
+                                    isValid={touched.email && !errors.email}
+                                    isInvalid={touched.email && !!errors.email}
+                                />
                                 <Form.Control.Feedback type="invalid">
                                     Digite um email válido
                                 </Form.Control.Feedback>
@@ -76,6 +90,10 @@ function Checkout(props) {
                                     name="nomeCompleto"
                                     data-testid="txt-nome-completo"
                                     className="my-2"
+                                    value={values.nome}
+                                    onChange={handleChange}
+                                    isValid={touched.nome && !errors.nome}
+                                    isInvalid={touched.nome && !!errors.nome}
                                 />
                                 <Form.Control.Feedback type="invalid">
                                     Digite o seu nome completo (mínimo 5 Caracteres).
@@ -110,6 +128,10 @@ function Checkout(props) {
                                     placeholder="Digite o seu CPF"
                                     name="cpf"
                                     data-testid="txt-cpf"
+                                    value={values.cpf}
+                                    onChange={handleChange}
+                                    isValid={touched.cpf && !errors.cpf}
+                                    isInvalid={touched.cpf && !!errors.cpf}
                                     />
                                 <Form.Control.Feedback type="invalid">
                                     Digite um CPF válido
@@ -127,6 +149,11 @@ function Checkout(props) {
                                     name="endereco"
                                     data-testid="txt-endereco"
                                     className="my-2"
+                                    value={values.endereco}
+                                    onChange={handleChange}
+                                    isValid={touched.endereco && !errors.endereco}
+                                    isInvalid={touched.endereco && !!errors.enderco}
+
                                 />
                                 <Form.Control.Feedback type="invalid">
                                     Digite o seu endereço.
@@ -143,6 +170,10 @@ function Checkout(props) {
                                     name="estado"
                                     data-testid="estado"
                                     className="my-2"
+                                    value={values.estado}
+                                    onChange={handleChange}
+                                    isValid={touched.estado && !errors.estado}
+                                    isInvalid={touched.estado && !!errors.estado}
                                 >
                                 <ListarEstados />
                                 </Form.Control>
@@ -161,6 +192,9 @@ function Checkout(props) {
                                     name="cidade"
                                     data-testid="cidade"
                                     className="my-2"
+                                    value={values.cidade}
+                                    isValid={touched.cidade && !errors.cidade}
+                                    isInvalid={touched.cidade && !!errors.cidade}
                                 >
                                     <ListarCidades estado={''} />
                                 </Form.Control>
@@ -179,6 +213,10 @@ function Checkout(props) {
                                     placeholder="Digite o seu CEP"
                                     name="cep"
                                     data-testid="txt-cep"
+                                    value={values.cep}
+                                    onChange={handleChange}
+                                    isValid={touched.cep && !errors.cep}
+                                    isInvalid={touched.cep && !!errors.cep}
                                     />
                                 <Form.Control.Feedback type="invalid">
                                     Digite o seu CEP
